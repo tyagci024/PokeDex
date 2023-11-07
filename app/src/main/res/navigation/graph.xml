@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph"
+    app:startDestination="@id/homeListPage">
+
+    <fragment
+        android:id="@+id/homeListPage"
+        android:name="com.example.pokedex.view.HomeListPage"
+        android:label="fragment_home_list_page"
+        tools:layout="@layout/fragment_home_list_page" >
+        <action
+            android:id="@+id/action_homeListPage_to_detailListPage"
+            app:destination="@id/detailListPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailListPage"
+        android:name="com.example.pokedex.view.DetailListPage"
+        android:label="fragment_detail_list_page"
+        tools:layout="@layout/fragment_detail_list_page" >
+        <action
+            android:id="@+id/action_detailListPage_to_homeListPage"
+            app:destination="@id/homeListPage" />
+        <argument
+            android:name="currentPoke"
+            app:argType="com.example.pokedex.model.Pokemon" />
+    </fragment>
+</navigation>
