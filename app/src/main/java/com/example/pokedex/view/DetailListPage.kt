@@ -28,15 +28,16 @@ class DetailListPage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail_list_page , container, false)
-        binding.pokemon=args.currentPoke
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_detail_list_page, container, false)
+        binding.pokemon = args.currentPoke
 
         binding.backButton.setOnClickListener {
             requireActivity().onBackPressed()
         }
 
 
-        val startColor = Color.parseColor(args.currentPoke.light_color_code)
+        val startColor = Color.parseColor(args.currentPoke.light_color_code ?: "#e9ec87")
         val endColor = Color.parseColor("#ffffff") // Varsayılan bir bitiş rengi (Siyah)
 
 
@@ -46,9 +47,10 @@ class DetailListPage : Fragment() {
         )
 
         binding.detailConstraint.background = gradientDrawable
-        binding.toolbar.background= GradientDrawable(
+        binding.toolbar.background = GradientDrawable(
             GradientDrawable.Orientation.TOP_BOTTOM,
-            intArrayOf(startColor, startColor))
+            intArrayOf(startColor, startColor)
+        )
 
         // Inflate the layout for this fragment
         binding.pokeImage.downloadfromURL(args.currentPoke.img)
